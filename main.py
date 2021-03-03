@@ -3,6 +3,7 @@ from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
+import unittest
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -13,6 +14,12 @@ todos = ['Comprar cafe', 'Enviar solicitud de compra',
          'Entregar video a producto']
 
 # Los decoradores que usen route se les llama vistas
+
+
+@app.cli.command()
+def test():
+    tests = unittest.TestLoader().discover('tests')
+    unittest.TextTestRunner().run(tests)
 
 
 class LoginForm(FlaskForm):
