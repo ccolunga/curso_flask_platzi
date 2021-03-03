@@ -2,7 +2,11 @@ from flask import Flask, request, make_response, redirect, render_template
 
 app = Flask(__name__)
 
+todos = ['TODO 1', 'TODO 3', 'TODO 3']
+
 # Los decoradores que usen route se les llama vistas
+
+
 @app.route("/")
 def index():
     user_ip = request.remote_addr
@@ -28,9 +32,31 @@ def helloUser(user):
 
 """
 
+""" 
+El uso de los 3 asteriscos es para desglosar las variables que se tiene en un dictionario
+por ejemplo:
+
+context = {
+        'user_ip': user_ip,
+        'todos': todos
+    }
+
+SIN USAR ASTERISCOS
+#RESULTADO 
+# {'user_ip': user_ip, 'todos': todos}
+
+USANDO ASTERISCOS
+#RESULTADO 
+# 'user_ip': user_ip, 'todos': todos
+"""
+
 
 @app.route("/hello")
 def hello():
     user_ip = request.cookies.get("user_ip")
-    # ''' el uso de {}.format() es para mostrar '''
-    return render_template("hello.html", user_ip=user_ip)
+    context = {
+        'user_ip': user_ip,
+        'todos': todos
+    }
+
+    return render_template("hello.html", **context)
