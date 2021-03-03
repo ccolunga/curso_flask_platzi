@@ -1,7 +1,10 @@
+<!-- Se extiende la hello.html desde la pagina base.html -->
 {% extends 'base.html' %}
 
+<!-- Se importa el macros html para realizar la renderizacion de los todos -->
 {% import 'macros.html' as macros  %}
 
+<!-- Se utiliza el metodo super para traer la plantilla padre a este archivo-->
 {% block title %} 
     
     {{ super() }}
@@ -9,6 +12,7 @@
 
 {% endblock  %}
 
+<!-- Utilizamos un bloque para renderizar nuestros valores que tenemos en la lista de "to dos" utilizando estructuras de control-->
 {% block content %}
     {% if user_ip %}
         <p>Hello world Flask, tu ip es {{ user_ip }}</p>
