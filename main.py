@@ -8,6 +8,11 @@ todos = ['Comprar cafe', 'Enviar solicitud de compra',
 # Los decoradores que usen route se les llama vistas
 
 
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('404.html', error=error)
+
+
 @app.route("/")
 def index():
     user_ip = request.remote_addr
