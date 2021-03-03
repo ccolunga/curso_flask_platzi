@@ -1,4 +1,4 @@
-from flask import Flask, request, make_response, redirect render_tamplate
+from flask import Flask, request, make_response, redirect, render_template
 
 app = Flask(__name__)
 
@@ -11,6 +11,7 @@ def index():
     response.set_cookie("user_ip", user_ip)
 
     return response
+
 
 """ 
 Para las routes dinamicas basta con agregar <> por ejemplo
@@ -27,8 +28,9 @@ def helloUser(user):
 
 """
 
+
 @app.route("/hello")
 def hello():
     user_ip = request.cookies.get("user_ip")
     # ''' el uso de {}.format() es para mostrar '''
-    return "Hello world Flask, tu ip es {}".format(user_ip)
+    return render_template("hello.html", user_ip=user_ip)
