@@ -15,8 +15,12 @@
 
 <!-- Utilizamos un bloque para renderizar nuestros valores que tenemos en la lista de "to dos" utilizando estructuras de control-->
 {% block content %}
+    {% if username %}
+        <h1>Bienvenido, {{ username | capitalize }} </h1>
+    {% endif %}
+
     {% if user_ip %}
-        <h1>Hello world Flask, tu ip es {{ user_ip }}</h1>
+        <h3>Hello world Flask, tu ip es {{ user_ip }}</h3>
     {% else %}
         <a href="{{ url_for ('index')}}" >Ir a inicio </a>
     {% endif %}
