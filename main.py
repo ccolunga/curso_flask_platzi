@@ -1,4 +1,4 @@
-from flask import Flask, request, make_response, redirect, render_template, session, url_for, flash
+from flask import request, make_response, redirect, render_template, session, url_for, flash
 import unittest
 
 from app import create_app
