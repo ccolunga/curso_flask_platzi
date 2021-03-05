@@ -1,5 +1,6 @@
-from flask import request, make_response, redirect, render_template, session, url_for, flash
 import unittest
+from flask import request, make_response, redirect, render_template, session, url_for, flash
+from flask_login import login_required
 
 from app.firestore_service import get_users
 from app.firestore_service import get_todos
@@ -42,6 +43,7 @@ def index():
 
 
 @app.route("/hello", methods=['GET'])
+@login_required
 def hello():
     user_ip = session.get("user_ip")
     username = session.get('username')
