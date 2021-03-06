@@ -13,7 +13,10 @@
 
 {% block body %}
     {% block header %}
-        {% include 'navbar.html' %}    
+        {% if username %}
+            {% include 'navbar.html' %}
+        {% endif %}
+        
     {% endblock  %}
 
     {% for message in get_flashed_messages() %}
