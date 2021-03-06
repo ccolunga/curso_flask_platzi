@@ -10,7 +10,7 @@ class LoginForm(FlaskForm):
 
 
 class TodoForm(FlaskForm):
-    description = StringField('Descripcion', validators=[DataRequired()])
+    description = StringField('Añade nueva tarea', validators=[DataRequired()])
     submit = SubmitField('Crear')
 
 
@@ -19,4 +19,4 @@ class DeleteTodoForm(FlaskForm):
 
 
 class UpdateTodoForm(FlaskForm):
-    submit = SubmitField('Actualizar')
+    submit = SubmitField('Completado')

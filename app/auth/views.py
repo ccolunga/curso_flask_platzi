@@ -1,6 +1,6 @@
 from flask import render_template, session, redirect, flash, url_for
 from flask_login import login_user, login_required, logout_user
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from app.forms import LoginForm
 
@@ -23,9 +23,9 @@ def login():
         user_doc = get_user(username)
 
         if user_doc.to_dict() is not None:
-            password_form_db = user_doc.to_dict()['password']
-
-            if password == password_form_db:
+            if check_password_hash(user_doc.to_dict()['password'], password):
+                # password_form_db = user_doc.to_dict()['password']
+                # if password == password_form_db:
                 user_data = UserData(username, password)
                 user = UserModel(user_data)
 

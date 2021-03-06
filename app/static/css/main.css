@@ -7,12 +7,10 @@ img {
 }
 
 #submit {
-    margin-top: 15px;
-    background-color: #ffffff;
-    height:34px;
+    /*margin-top: 15px;
+    height:34px;*/
     width:100%;
-    color: black;
-    font-weight: bold;
+    /*font-weight: bold;*/
     text-align: center;
 }
 
@@ -62,4 +60,29 @@ img {
     margin-top: 100px;
 }
 
-  
+
+.form-todo {
+    margin-top: 15px;
+    border: initial;
+}
+
+.btn-todo {
+    position: initial;
+    width: 100%;
+}
+
+.label-todo {
+    font-size: large;
+}
+
+.submit-todo {
+    margin-top: 15px;
+}
+
+.no-border{
+    border: initial;
+}
+
+.list-group-todo{
+    margin-bottom: 20px;
+}

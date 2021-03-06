@@ -9,11 +9,9 @@
     <div class="wrapper">
         <div id="formContent">
             <div class="container signup">
-                <div class="row">
-                    <h1 class="title">Inicia sesión</h1>
-                    <div class="col-lg-6">
-                        {{ wtf.quick_form(login_form) }}
-                    </div>
+                <h1 class="title">Inicia sesión</h1>
+                <div class="">
+                    {{ wtf.quick_form(login_form, button_map={'submit': 'primary'}) }}
                 </div>
             </div>
         </div>

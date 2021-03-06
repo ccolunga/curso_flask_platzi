@@ -5,6 +5,8 @@
 {% import 'macros.html' as macros  %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
+
+
 <!-- Se utiliza el metodo super para traer la plantilla padre a este archivo-->
 {% block title %} 
     
@@ -26,13 +28,18 @@
     {% endif %}
 -->
     <div class="container">
-        <h2>Crea una nueva tarea</h2>
-        {{ wtf.quick_form(todo_form) }}
-
-        <ul class="list-group">
-            {% for todo in todos %}
-                {{ macros.render_todo(todo, delete_form, update_form) }}
-            {% endfor %}
-        </ul>
+        <div class="row">
+            <div class="list-group-item no-border">
+                {{ wtf.quick_form(todo_form, extra_classes="label-todo submit-todo", button_map={'submit': 'primary'} ) }}
+            </div>
+            
+            <div class="form-group form-todo">
+                <ul class="list-group-item no-border">
+                    {% for todo in todos %}
+                        {{ macros.render_todo(todo, delete_form, update_form) }}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div> 
 {% endblock  %}

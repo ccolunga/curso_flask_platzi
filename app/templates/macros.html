@@ -1,11 +1,31 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% macro render_todo(todo, delete_form, update_form) %}
-    <li class="list-group-item">
-        <span class="badge">{{ todo.to_dict().done }}</span>
-        Descripción: {{ todo.to_dict().descripcion }}
+    <li class="list-group-item d-flex justify-content-between align-items-center list-group-todo">
+        <div>
+           <span class="glyphicon glyphicon-arrow-right"></span> <strong>{{ todo.to_dict().descripcion }}</strong>
 
-        {{ wtf.quick_form(delete_form, action=url_for('delete', todo_id=todo.id)) }}
-        {{ wtf.quick_form(update_form, action=url_for('update', todo_id=todo.id, done=todo.to_dict().done)) }}
+            {% if todo.to_dict().done %}
+                <span class="badge badge-success badge-pill">Completado</span>
+            {% else %}
+                <span class="badge badge-warning badge-pill">Pendiente</span>
+            {% endif %}
+        </div>
+        
+            <div class="btn-group btn-todo" role="group">
+                <div class="col-sm-6">
+                    {{ wtf.quick_form(update_form, extra_classes="btn-group-sm submit-todo", button_map={'submit': 'success'}, action=url_for('update', todo_id=todo.id, done=todo.to_dict().done)) }}
+                </div>
+                <div class="col-sm-6">
+                    {{ wtf.quick_form(delete_form, extra_classes="btn-group-sm submit-todo", button_map={'submit': 'danger'}, action=url_for('delete', todo_id=todo.id)) }}
+                </div>
+                
+            </div>
+        
+
+        
+        
     </li>
+
+
 {% endmacro %}

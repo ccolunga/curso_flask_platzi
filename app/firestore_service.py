@@ -13,6 +13,11 @@ def get_users():
 
 
 def get_user(user_id):
+    # print(
+    #   f"----USER 2---- { db.collection('users').document(user_id).to_dict()}")
+    print(f"----USER---- { db.collection('users').document(user_id).get()}")
+    # print(
+    #   f"- ---PASSWORD---- {db.collection('users').document(user_id).to_dict()['password']}")
     return db.collection('users').document(user_id).get()
 
 
@@ -43,4 +48,4 @@ def update_todo(user_id, todo_id, done):
 
 
 def _get_todo_ref(user_id, todo_id):
-    return db.document(f'users/{user_id}/todos/{todo_id}')
+    return db.document('users/{}/todos/{}'.format(user_id, todo_id))

@@ -3,12 +3,9 @@ from flask import request, make_response, redirect, render_template, session, ur
 from flask_login import login_required, current_user
 from app import create_app
 from app.forms import TodoForm, DeleteTodoForm, UpdateTodoForm
-from app.firestore_service import update_todo, get_todos, put_todo, delete_todo
+from app.firestore_service import update_todo, get_todos, put_todo, delete_todo, get_users
 
 app = create_app()
-
-todos = ['Comprar cafe', 'Enviar solicitud de compra',
-         'Entregar video a producto']
 
 # Los decoradores que usen route se les llama vistas
 
@@ -57,6 +54,11 @@ def hello():
         'delete_form': delete_form,
         'update_form': update_form
     }
+
+    #users = get_users()
+    # for user in users:
+    #print(f'----USER---- {user.id}')
+#        print(user.to_dic()['password'])
 
     if todo_form.validate_on_submit():
         put_todo(user_id=username, description=todo_form.description.data)
