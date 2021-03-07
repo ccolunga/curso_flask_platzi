@@ -6,8 +6,15 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="title">Registra una cuenta nueva</h1>
-    <div class="container">
-        {{ wtf.quick_form(signup_form) }}
+    <div class="wrapper">
+        <div id="formContent">
+            <div class="container signup">
+                <h1 class="title">Registra tu cuenta</h1>
+                <div class="">
+                    {{ wtf.quick_form(signup_form, button_map={'submit':'primary'}) }}
+                </div>
+            </div>
+        </div>
     </div>
+    
 {% endblock %}
