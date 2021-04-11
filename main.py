@@ -31,23 +31,23 @@ def index():
     #raise(Exception('500 error'))
     user_ip = request.remote_addr
 
-    response = make_response(redirect("/hello"))
+    response = make_response(redirect("/my_tasks"))
     #response.set_cookie("user_ip", user_ip)
     session['user_ip'] = user_ip
     return response
 
 
-@app.route("/hello", methods=['GET', 'POST'])
+@app.route("/my_tasks", methods=['GET', 'POST'])
 @login_required
-def hello():
-    user_ip = session.get("user_ip")
+def my_tasks():
+    #user_ip = session.get("user_ip")
     username = current_user.id
     todo_form = TodoForm()
     delete_form = DeleteTodoForm()
     update_form = UpdateTodoForm()
 
     context = {
-        'user_ip': user_ip,
+        # 'user_ip': user_ip,
         'todos': get_todos(user_id=username),
         'username': username,
         'todo_form': todo_form,
@@ -65,7 +65,7 @@ def hello():
 
         flash('Tu tarea se creo con éxito')
 
-        return redirect(url_for('hello'))
+        return redirect(url_for('my_tasks'))
 
     return render_template("hello.html", **context)
 
@@ -75,7 +75,7 @@ def delete(todo_id):
     user_id = current_user.id
     delete_todo(user_id=user_id, todo_id=todo_id)
 
-    return redirect(url_for('hello'))
+    return redirect(url_for('my_tasks'))
 
 
 @app.route('/todos/update/<todo_id>/<int:done>', methods=['POST'])
@@ -84,4 +84,4 @@ def update(todo_id, done):
 
     update_todo(user_id=user_id, todo_id=todo_id, done=done)
 
-    return redirect(url_for('hello'))
+    return redirect(url_for('my_tasks'))

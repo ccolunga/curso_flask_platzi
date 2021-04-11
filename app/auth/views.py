@@ -19,6 +19,7 @@ def login():
     if login_form.validate_on_submit():
         username = login_form.username.data
         password = login_form.password.data
+        email = login_form.email.data
 
         user_doc = get_user(username)
 
@@ -26,14 +27,14 @@ def login():
             if check_password_hash(user_doc.to_dict()['password'], password):
                 # password_form_db = user_doc.to_dict()['password']
                 # if password == password_form_db:
-                user_data = UserData(username, password)
+                user_data = UserData(username, password, email)
                 user = UserModel(user_data)
 
                 login_user(user)
 
                 flash('Bienvenido de nuevo')
 
-                redirect(url_for('hello'))
+                redirect(url_for('my_tasks'))
             else:
                 flash('La informacion proporcionada no coincide')
         else:
@@ -69,7 +70,7 @@ def signup():
 
             flash('Bienvenido')
 
-            return redirect(url_for('hello'))
+            return redirect(url_for('my_tasks'))
         else:
             flash('El usuario ya existe')
 

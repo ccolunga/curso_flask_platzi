@@ -22,15 +22,15 @@ class MainTest(TestCase):
     def test_index_redirects(self):
         response = self.client.get(url_for('index'))
 
-        self.assertRedirects(response, url_for('hello'))
+        self.assertRedirects(response, url_for('my_tasks'))
 
     def test_hello_get(self):
-        response = self.client.get(url_for('hello'))
+        response = self.client.get(url_for('my_tasks'))
 
         self.assert200(response)
 
     def test_hello_post(self):
-        response = self.client.post(url_for('hello'))
+        response = self.client.post(url_for('my_tasks'))
 
         self.assertTrue(response.status_code, 405)
 
