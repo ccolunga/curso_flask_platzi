@@ -13,11 +13,7 @@ def get_users():
 
 
 def get_user(user_id):
-    # print(
-    #   f"----USER 2---- { db.collection('users').document(user_id).to_dict()}")
     print(f"----USER---- { db.collection('users').document(user_id).get()}")
-    # print(
-    #   f"- ---PASSWORD---- {db.collection('users').document(user_id).to_dict()['password']}")
     return db.collection('users').document(user_id).get()
 
 
