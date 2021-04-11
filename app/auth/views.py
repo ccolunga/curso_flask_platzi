@@ -55,12 +55,13 @@ def signup():
     if signup_form.validate_on_submit():
         username = signup_form.username.data
         password = signup_form.password.data
+        email = signup_form.email.data
 
         user_doc = get_user(username)
 
         if user_doc.to_dict() is None:
             password_hash = generate_password_hash(password)
-            user_data = UserData(username, password_hash)
+            user_data = UserData(username, password_hash, email)
             user_put(user_data)
 
             user = UserModel(user_data)

@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
-from .config import Config
+from .config import DevelopmentConfig
 from .auth import auth
 from .models import UserModel
 
@@ -19,7 +19,7 @@ def create_app():
     app = Flask(__name__)
     bootstrap = Bootstrap(app)
 
-    app.config.from_object(Config)
+    app.config.from_object(DevelopmentConfig)
 
     login_manger.init_app(app)
 

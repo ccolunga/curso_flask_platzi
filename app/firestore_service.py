@@ -13,13 +13,18 @@ def get_users():
 
 
 def get_user(user_id):
-    print(f"----USER---- { db.collection('users').document(user_id).get()}")
+    #print(f"----USER---- { db.collection('users').document(user_id).get()}")
     return db.collection('users').document(user_id).get()
 
 
 def user_put(user_data):
     user_ref = db.collection('users').document(user_data.username)
-    user_ref.set({'password': user_data.password})
+    user_ref.set(
+        {
+            'password': user_data.password,
+            'email': user_data.email
+        }
+    )
 
 
 def get_todos(user_id):

@@ -2,33 +2,31 @@
 
 
 {% block head %}
-    {{ super() }}
+{{ super() }}
 
-    <title>
-        {% block title  %} Flask Platzi | {% endblock  %}
-    </title>
+<title>
+    {% block title %} Flask Platzi | {% endblock %}
+</title>
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/flask.png') }}">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
 {% endblock %}
 
 {% block body %}
-    {% block header %}
-        {% include 'navbar.html' %}
-    {% endblock  %}
+{% block header %}
+{% include 'navbar.html' %}
+{% endblock %}
 
-    {% for message in get_flashed_messages() %}
-        <div class="alert alert-info alert-dismissible">
-            <button type="button" 
-                    data-dismiss="alert" 
-                    class="close">&times;</button>
-            {{ message }}
-        </div>
-    {% endfor %}
+{% for message in get_flashed_messages() %}
+<div class="alert alert-info alert-dismissible">
+    <button type="button" data-dismiss="alert" class="close">&times;</button>
+    {{ message }}
+</div>
+{% endfor %}
 
-    {% block content %}{% endblock %}
-    {% block scripts %}
-        {{ super() }}
-    {% endblock  %}
-{% endblock  %}
-    
+{% block content %}{% endblock %}
+{% block scripts %}
+{{ super() }}
+{% endblock %}
+{% endblock %}
