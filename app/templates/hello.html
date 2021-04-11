@@ -18,7 +18,10 @@ Bienvenido
 <!-- Utilizamos un bloque para renderizar nuestros valores que tenemos en la lista de "to dos" utilizando estructuras de control-->
 {% block content %}
 {% if username %}
-<h1>Bienvenido, {{ username | capitalize }} </h1>
+<div class="container">
+    <h1>Bienvenido, {{ username | capitalize }} </h1>
+</div>
+
 {% endif %}
 {#
 {% if user_ip %}
